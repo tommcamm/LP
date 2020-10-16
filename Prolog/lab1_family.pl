@@ -47,10 +47,10 @@ antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).
 discendente(X, Y) :- antenato(Y, X).
 
 %%% fratello/2  Qua si richia di avere il fatto che un fratello è fratello di se stesso, mettiamo il diverso
-fratello(X, Y) :- X \= Y, maschio(X), genitore(Z, X), genitore(Z, Y).
+fratello(X, Y) :- X \== Y, maschio(X), genitore(Z, X), genitore(Z, Y).
 
 %%% sorella/2
-sorella(X, Y) :- X \= Y, femmina(X), genitore(Z, X), genitore(Z, Y).
+sorella(X, Y) :- X \== Y, femmina(X), genitore(Z, X), genitore(Z, Y).
 
 %%% zio/2
 zio(X,Y) :- fratello(X, Z), genitore(Z, Y).
