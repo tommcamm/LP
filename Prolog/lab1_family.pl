@@ -1,3 +1,5 @@
+% % % Fatti
+
 maschio(roberto).
 
 maschio(tommaso).
@@ -35,7 +37,8 @@ madre(ana, raffaele).
 
 % % % Predicati
 
-%%% genitore/2  Questo è un esempio di OR, esecuzione è alto verso basso e sx verso dx, in alternativa si può usare ; come OR al posto di , (AND) ma la seconda alternativa è da evitare!
+%%% genitore/2  Questo è un esempio di OR, esecuzione è alto verso basso e sx verso dx,
+%%% in alternativa si può usare ; come OR al posto di , (AND) ma la seconda alternativa è da evitare!
 genitore(X, Y) :- padre(X, Y).
 genitore(X, Y) :- madre(X, Y).
 
@@ -47,6 +50,8 @@ antenato(X, Y) :- genitore(X, Z), antenato(Z, Y).
 discendente(X, Y) :- antenato(Y, X).
 
 %%% fratello/2  Qua si richia di avere il fatto che un fratello è fratello di se stesso, mettiamo il diverso
+%%% In Prolog ci sono tanti tipi di disuguaglianze, esiste \== oppure dif(X, Y). \== è non dichiarativo, dif(X, Y) è invece dichiarativo. 
+%%% per ulteriori dettagli vedi https://stackoverflow.com/questions/13757261/using-2-or-dif-2?lq=1
 fratello(X, Y) :- X \== Y, maschio(X), genitore(Z, X), genitore(Z, Y).
 
 %%% sorella/2
@@ -64,4 +69,5 @@ nonno(X,Y) :- padre(X,Z), genitore(Z,Y).
 %%% nonna/2
 nonna(X,Y) :- madre(X,Z), genitore(Z,Y).
 
+%%% Predicato per pulire il terminale (come il comando cls o clear su linux), non è inerente con laboratorio/esercizio
 cls :- write('\33\[2J').
